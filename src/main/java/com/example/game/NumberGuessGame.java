@@ -5,18 +5,23 @@ import java.util.Scanner;
 
 public class NumberGuessGame {
     public static void main(String[] args) {
-        Random random = new Random();
-        int number = random.nextInt(10) + 1;
-
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Guess a number between 1 and 10: ");
-        int guess = scanner.nextInt();
+        int number = (int) (Math.random() * 100) + 1; // random number between 1 and 100
+        int guess = 0;
 
-        if (guess == number) {
-            System.out.println("Correct! You win!");
-        } else {
-            System.out.println("Wrong! The number was " + number);
+        System.out.println("Welcome to Number Guess Game!");
+        while (guess != number) {
+            System.out.print("Enter your guess: ");
+            guess = scanner.nextInt();
+            if (guess < number) {
+                System.out.println("Too low!");
+            } else if (guess > number) {
+                System.out.println("Too high!");
+            } else {
+                System.out.println("Correct! The number was " + number);
+            }
         }
+
         scanner.close();
     }
 }
